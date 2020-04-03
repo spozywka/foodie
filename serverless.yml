@@ -1,0 +1,38 @@
+service: django
+app: django
+org: mc001
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+
+provider:
+  name: aws
+  runtime: python3.7
+  environment:
+    POSTGRES_HOST: ${param:POSTGRES_HOST}
+    POSTGRES_PORT: ${param:POSTGRES_PORT}
+    POSTGRES_DB: ${param:POSTGRES_DB}
+    POSTGRES_USER: ${param:POSTGRES_USER}
+    POSTGRES_PASSWORD: ${param:POSTGRES_PASSWORD}
+    SECRET_KEY: ${param:SECRET_KEY}
+    DJANGO_SETTINGS_MODULE: app.settings
+
+functions:
+  app:
+    handler: wsgi_handler.handler
+    timeout: 30
+    events:
+      - http: ANY /
+      - http: ANY {proxy+}
+  migrate:
+    handler: serverless_migrate.handler
+    timeout: 300
+
+custom:
+  wsgi:
+    app: app.wsgi.application
+    packRequirements: false
+  pythonRequirements:
+    dockerizePip: non-linux
+    dockerFile: ./Dockerfile
