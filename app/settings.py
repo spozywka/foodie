@@ -33,13 +33,17 @@ DATABASES = {'default': DB_DEFAULT}
 
 # apps
 INSTALLED_APPS = [
+    # django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party
     'rest_framework',
+    'drf_yasg',
+    # custom
     'users.apps.UsersConfig',
 ]
 
