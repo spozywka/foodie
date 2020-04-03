@@ -1,5 +1,5 @@
-service: django
-app: django
+service: foodie
+app: foodie
 org: mc001
 
 plugins:
