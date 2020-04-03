@@ -1,5 +1,5 @@
-# Django-Serverless
-Django, Docker and Serverless on Lambda.
+# Foodie
+Local Market app for HackYeah.
 
 ## Requirements
 To work with this repo you should have preinstalled:
