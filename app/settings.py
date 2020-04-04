@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'offers.apps.OffersConfig',
     'orders.apps.OrdersConfig',
+    'products.apps.ProductsConfig',
 ]
 
 # middleware

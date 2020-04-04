@@ -20,5 +20,5 @@ def get_default_photo_url() -> str:
     return response.url
 
 
-def get_default_qty() -> int:
-    return randrange(1, 10)
+def get_default_price() -> int:
+    return randrange(3, 15)

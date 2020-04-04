@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('order_date', models.DateTimeField(auto_now_add=True)),
-                ('qty', models.IntegerField(default=common.utils.get_default_qty)),
+                ('qty', models.IntegerField(default=1)),
                 ('offer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', to='offers.Offer')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', to=settings.AUTH_USER_MODEL)),
             ],
