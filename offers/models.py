@@ -14,10 +14,6 @@ class Offer(models.Model):
         on_delete=models.CASCADE,
         related_name='offers',
     )
-    clients = models.ManyToManyField(
-        'users.User',
-        related_name='services',
-    )
     title = models.CharField(
         max_length=255,
         default='Title',
@@ -47,3 +43,14 @@ class Offer(models.Model):
         max_length=2048,
         default=get_default_photo_url,
     )
+
+    @classmethod
+    def generate(cls):
+        from random import choice
+        from users.models import User
+        user_ids = User.objects.values_list('id', flat=True)
+        return Offer.objects.create(
+            user_id=choice(user_ids),
+            category=choice(list(Categories)).value,
+            city=choice(list(Cities)).value,
+        )

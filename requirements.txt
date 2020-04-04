@@ -7,3 +7,5 @@ drf-yasg==1.17.1
 requests==2.22.0
 django-filter==2.2.0
 django-cors-headers==3.2.1
+django-extensions==2.2.9
+bpython==0.19

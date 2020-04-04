@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'django_filters',
+    'django_extensions',
     # custom
     'users.apps.UsersConfig',
     'offers.apps.OffersConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 # middleware
