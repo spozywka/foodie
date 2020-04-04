@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from transactions.models import Transaction
 from transactions.serializers import TransactionSerializer
 from .models import Order
 
@@ -16,3 +17,13 @@ class OrderSerializer(serializers.ModelSerializer):
             'order_date',
             'products',
         )
+
+    def create(self, validated_data):
+        products = validated_data.pop('products')
+        order = Order.objects.create(**validated_data)
+        for product in products:
+            Transaction.objects.create(
+                order=order,
+                **product,
+            )
+        return order
