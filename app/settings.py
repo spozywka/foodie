@@ -43,17 +43,29 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
     # custom
     'users.apps.UsersConfig',
     'offers.apps.OffersConfig',
+]
+
+# middleware
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 # rest framework
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-    ]
+    ],
 }
+
+# cors
+CORS_ORIGIN_ALLOW_ALL = True
 
 # user
 AUTH_USER_MODEL = 'users.User'
