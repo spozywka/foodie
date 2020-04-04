@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     # custom
     'users.apps.UsersConfig',
+    'offers.apps.OffersConfig',
 ]
 
 # rest framework
@@ -56,3 +57,6 @@ REST_FRAMEWORK = {
 
 # user
 AUTH_USER_MODEL = 'users.User'
+
+# photo
+PHOTO_API_URL = 'https://source.unsplash.com/collection/1131211/400x300'
