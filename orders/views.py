@@ -14,18 +14,22 @@ class OrderViewSet(viewsets.ModelViewSet):
     filterset_fields = ['user_id']
 
     def create(self, request, *args, **kwargs):
+        """
+        DRF is a bitch.
+        Nested create has empty valid_data.
+        """
         data = request.data
-        assert data['offer_id'] is not None
-        assert data['user_id'] is not None
-        assert data['products'] is not None
-        assert isinstance(data['products'], list)
+        assert data.get('offer_id') is not None
+        assert data.get('user_id') is not None
+        assert data.get('products') is not None
+        assert isinstance(data.get('products'), list)
         products = data.pop('products')
         order = Order.objects.create(
             **data,
         )
         for product in products:
-            assert product['product_id'] is not None
-            assert product['qty'] is not None
+            assert product.get('product_id') is not None
+            assert product.get('qty') is not None
             Transaction.objects.create(
                 order=order,
                 **product,
