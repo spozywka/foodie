@@ -19,6 +19,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('users/', include('users.urls')),
     path('offers/', include('offers.urls')),
+    path('products/', include('products.urls')),
     path('swagger.json', schema_view.as_cached_view(
         renderer_classes=(SwaggerJSONRenderer, ),
     )),

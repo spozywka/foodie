@@ -1,6 +1,9 @@
 from django.db import models
 
-from common.utils import get_default_price
+from common.utils import (
+    get_default_price,
+    get_default_product_name,
+)
 
 
 class Product(models.Model):
@@ -11,8 +14,17 @@ class Product(models.Model):
     )
     name = models.CharField(
         max_length=255,
-        default='Product',
+        default=get_default_product_name,
     )
     price = models.IntegerField(
         default=get_default_price,
     )
+
+    @classmethod
+    def generate(cls):
+        from random import choice
+        from offers.models import Offer
+        offer_ids = Offer.objects.values_list('id', flat=True)
+        return Product.objects.create(
+            offer_id=choice(offer_ids),
+        )
