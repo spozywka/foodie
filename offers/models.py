@@ -25,12 +25,12 @@ class Offer(models.Model):
     category = models.CharField(
         max_length=255,
         choices=[(e.value, e.value) for e in Categories],
-        default=Categories.Food,
+        default=Categories.Food.value,
     )
     city = models.CharField(
         max_length=255,
         choices=[(e.value, e.value) for e in Cities],
-        default=Cities.Warsaw,
+        default=Cities.Warsaw.value,
     )
     distance = models.CharField(
         max_length=255,
