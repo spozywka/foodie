@@ -6,6 +6,9 @@ rebuild:
 	docker-compose build --no-cache
 	docker-compose up -d --force-recreate
 
+mm:
+	docker-compose exec app ./manage.py makemigrations
+
 migrate:
 	docker-compose exec app ./manage.py migrate
 

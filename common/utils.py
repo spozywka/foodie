@@ -53,3 +53,7 @@ def get_default_product_name() -> str:
 
 def get_default_price() -> int:
     return randrange(3, 15)
+
+
+def get_default_qty() -> int:
+    return randrange(1, 10)

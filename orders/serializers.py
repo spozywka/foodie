@@ -11,5 +11,4 @@ class OrderSerializer(serializers.ModelSerializer):
             'user_id',
             'offer_id',
             'order_date',
-            'qty',
         )

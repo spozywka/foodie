@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'offers.apps.OffersConfig',
     'orders.apps.OrdersConfig',
     'products.apps.ProductsConfig',
+    'transactions.apps.TransactionsConfig',
 ]
 
 # middleware
