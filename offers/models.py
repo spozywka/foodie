@@ -1,11 +1,11 @@
-from datetime import timedelta
-from random import randrange
-
 from django.db import models
-from django.utils.timezone import now
 
 from common.enums import Categories, Cities
-from common.utils import get_default_distance, get_default_photo_url
+from common.utils import (
+    get_default_distance,
+    get_default_photo_url,
+    get_default_delivery_date,
+)
 
 
 class Offer(models.Model):
@@ -13,6 +13,10 @@ class Offer(models.Model):
         'users.User',
         on_delete=models.CASCADE,
         related_name='offers',
+    )
+    clients = models.ManyToManyField(
+        'users.User',
+        related_name='services',
     )
     title = models.CharField(
         max_length=255,
@@ -34,12 +38,12 @@ class Offer(models.Model):
     )
     distance = models.CharField(
         max_length=255,
-        default=get_default_distance(),
+        default=get_default_distance,
     )
     delivery_date = models.DateTimeField(
-        default=now() + timedelta(days=randrange(1, 10))
+        default=get_default_delivery_date,
     )
     photo_url = models.CharField(
         max_length=2048,
-        default=get_default_photo_url(),
+        default=get_default_photo_url,
     )
