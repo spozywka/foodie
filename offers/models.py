@@ -5,6 +5,7 @@ from common.utils import (
     get_default_distance,
     get_default_photo_url,
     get_default_delivery_date,
+    get_default_offer_title,
 )
 
 
@@ -16,7 +17,7 @@ class Offer(models.Model):
     )
     title = models.CharField(
         max_length=255,
-        default='Title',
+        default=get_default_offer_title,
     )
     description = models.CharField(
         max_length=1024,
