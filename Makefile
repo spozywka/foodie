@@ -1,3 +1,6 @@
+install-deps:
+	npm i
+
 rebuild:
 	docker-compose down
 	docker-compose build --no-cache
