@@ -15,3 +15,9 @@ class Order(models.Model):
     order_date = models.DateTimeField(
         auto_now_add=True,
     )
+
+    @property
+    def total(self) -> int:
+        return sum([
+            product.product.price * product.qty for product in self.products.all()
+        ])
